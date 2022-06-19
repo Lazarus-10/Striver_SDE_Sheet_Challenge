@@ -9,7 +9,7 @@ void Sort(long long *nums, int low, int mid, int high){
         if(nums[i] <= nums[j]){  // keep in mind to put <= sign
             temp[k++] = nums[i++];
         }else{
-            ans += (mid-i+1);
+            ans += (mid-i+1); // all the numbers from i to mid can form valid pairs with nums[j] ans they will be greater than arr[i]
             temp[k++] = nums[j++];
         }
     }
