@@ -23,23 +23,34 @@ class Solution {
     }
 public:
     int uniquePaths(int m, int n) {
-        vector<vector<int>> dp(m, vector<int>(n, 0));
+        // vector<vector<int>> dp(m, vector<int>(n, 0));
         // return helper(0, 0, m, n, dp);
         // return helper2(m-1, n-1, dp);
         
         //Tabulation(Bottom-Up DP) (O(mn), O(mn))
-        for(int i=0; i<m; i++){
-            dp[i][0] = 1;
-        }
-        for(int i=0; i<n; i++){
-            dp[0][i] = 1;
-        }
-        for(int i=1; i<m; i++){
-            for(int j=1; j<n; j++){
-                dp[i][j] = dp[i-1][j] + dp[i][j-1];
-            }
-        }
-        return dp[m-1][n-1];
+        // for(int i=0; i<m; i++){
+        //     dp[i][0] = 1;
+        // }
+        // for(int i=0; i<n; i++){
+        //     dp[0][i] = 1;
+        // }
+        // for(int i=1; i<m; i++){
+        //     for(int j=1; j<n; j++){
+        //         dp[i][j] = dp[i-1][j] + dp[i][j-1];
+        //     }
+        // }
+        // return dp[m-1][n-1];
+        
+        // Combinatorics (T.C: O(m-1) or O(n-1))
+        // https://takeuforward.org/data-structure/grid-unique-paths-count-paths-from-left-top-to-the-right-bottom-of-a-matrix/
+        int N = n + m - 2;
+        int r = m - 1; // or n - 1
+        double res = 1;
+    
+        // Calculate NCr
+        for (int i = 1; i <= r; i++)
+            res = res * (N - r + i) / i;
+        return (int)res;
     }
 };
 int main(){
