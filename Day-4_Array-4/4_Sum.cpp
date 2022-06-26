@@ -23,7 +23,7 @@ public:
                         while(start < end && nums[end] == nums[--end]);
                     }
                 }
-                while(j+1 < n-2 && nums[j] == nums[j+1])j++;
+                while(j+1 < n-2 && nums[j] == nums[j+1])j++; //keep in mind, that after this while loop j will be incremented once more due to for loop
             }
             while(i+1 < n-3 && nums[i] == nums[i+1])i++;
         }
